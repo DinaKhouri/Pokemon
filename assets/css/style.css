@@ -1,0 +1,45 @@
+body {
+  background-image: url("../images/background.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.icon {
+  box-shadow: 2px 2px;
+  position: relative;
+}
+
+.charactertxt {
+  font-size: 1.3em;
+  color: black;
+  /*border: 3px solid black;*/
+  box-shadow: 2px 2px black;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.charachter1 {
+  height: 280px;
+  border-radius: 40%;
+  /*opacity: 0.7;*/
+}
+
+.ball {
+  padding-left: 90px;
+  padding-right: 90px;
+}
+
+.bar1,
+.bar2 {
+  border-style: ridge;
+  border-width: 4px;
+  border-color: #2b63b5;
+  color: #2b63b5;
+  height: 35px;
+  width: 100px;
+
+  border-radius: 4%;
+}
