@@ -1,16 +1,15 @@
 <!DOCTYPE <!DOCTYPE html>
 <html>
   <head>
+    
     <iframe
-      allow="autoplay"
+    allow="autoplay"
       style="display:none;"
-      width="560"
-      height="315"
-      src="#"
-      frameborder="0"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    ></iframe>
+     width="560" height="315" 
+     src="https://www.youtube.com/embed/B-zQV36GA0U?start=7"
+      frameborder="0" 
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen></iframe>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Pokemon</title>
@@ -36,8 +35,12 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"
     />
     <link rel="stylesheet" href="assets/css/style.css" />
-    <audio src="assets/sounds/#" id="#"></audio>
-    <audio src="assets/sounds/#" id="l#"></audio>
+    <audio src="assets/sounds/pick.mp3" id="pick"></audio>
+    <audio src="assets/sounds/evolute.mp3" id="evolute"></audio>
+    <audio src="assets/sounds/lose.mp3" id="lose"></audio>
+    <audio src="assets/sounds/lose.mp3" id="win"></audio>
+    <audio src="assets/sounds/hit.mp3" id="hit"></audio>
+    <audio src="assets/sounds/theme.mp3" id="theme"></audio>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   </head>
   <body>
@@ -54,8 +57,8 @@
     </div>
     <div class="row"></div>
     <div class="row">
-      <div class="col-sm-2"></div>
-      <div class="col-sm-1"><div class="character charactertxt">You</div></div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2"><div class="character charactertxt">Your Life</div></div>
       <div class="col-sm-1"></div>
       <div class="col-sm-1">
         
@@ -63,7 +66,7 @@
           class="img-fluid btn icon"
           id="pikaicon"
           name = "pika"
-          hitPower="10"
+          hitPower="18"
           src="assets/images/pikaicon.png"
         />
       </div>
@@ -72,7 +75,7 @@
           class="img-fluid btn icon"
           id="planticon"
           name = "plant"
-          hitPower="10"
+          hitPower="16"
           src="assets/images/planticon.png"
         />
       </div>
@@ -81,7 +84,7 @@
           class="img-fluid btn icon"
           id="charmicon"
           name = "charm"
-          hitPower="10"
+          hitPower="14"
           src="assets/images/charmicon.png"
         />
       </div>
@@ -90,20 +93,20 @@
           class="img-fluid btn icon"
           id="turtleicon"
           name = "turtle"
-          hitPower="10"
+          hitPower="12"
           src="assets/images/turtleicon.png"
         />
       </div>
-      <div class="col-sm-2"></div>
-      <div class="col-sm-1">
-        <div class="character charactertxt">Enemy</div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <div class="character charactertxt">Enemy's Life</div>
       </div>
       <div class="col-sm-1"></div>
     </div>
     <div class="row pb-3 mb-3">
       <div class="col-sm-1"></div>
       <div class="col-sm-2 bar1">
-        <h5>Life Energy 100%</h5></div>
+        <h5 class="energyLife1"></h5></div>
       
       <div class="col-sm-1"></div>
       <div class="col-sm-1"></div>
@@ -111,11 +114,10 @@
       <div class="col-sm-1"></div>
       <div class="col-sm-1"></div>
       <div class="col-sm-1"></div>
-      <div class="col-sm-2 bar2">
-       <h5>Life Energy 100%</h5>
-      
+      <div class="col-sm-2 bar1">
+          <h5 class="energyLife2"></h5></div>
       <div class="col-sm-1"></div>
-    </div>
+    
     <div class="row pt-3 mt-3">
       <div class="col-sm-1 "></div>
       <div class="col-sm-2 yourcharacter1">
@@ -128,7 +130,7 @@
       <div class="col-sm-1 "></div>
       <div class="col-sm-2 yourcharacter2">
         <img 
-        class="img-fluid charachter1" src="assets/images/question.jpg" />
+        class="img-fluid charachter2" src="assets/images/question.jpg" />
       </div>
       <div class="col-sm-1 "></div>
     </div>
