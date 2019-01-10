@@ -44,7 +44,7 @@ $(document).ready(function() {
       sound_pick.play();
       //source for ID+Var https://stackoverflow.com/questions/743994/how-do-i-select-an-element-in-jquery-by-using-a-variable-for-the-id
       $("#" + character1).animate({
-        left: "-370"
+        left: "-480"
       });
       //load energy bar
       $(".energyLife1").css({ "background-color": "yellow" });
@@ -57,9 +57,12 @@ $(document).ready(function() {
         .attr("src", "assets/images/" + character2 + "0" + ".png");
       sound_pick.play();
       $("#" + character2).animate({
-        left: "370"
+        left: "480"
       });
       $(".energyLife2").css({ "background-color": "yellow" });
+      //fill energy bar for both
+      lifeEnergy1 = "100";
+      lifeEnergy2 = "100";
     }
     //when user presses fight each energy bar changes according to hit power
     $(".ball").on("click", function() {
