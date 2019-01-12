@@ -17,72 +17,69 @@ $(document).ready(function() {
   lifeEnergy1 = "100";
   lifeEnergy2 = "100";
 
-  // create function to start whenever u beat a character and u get to pick a new one
-  // firstRound = function(winner) {
-  //   charSelected = true;
-  //   lifeEnergy1 = "100";
-  //   charachterCounter = "1";
-  //   character = "winner"; // created this to keep the character to our winning character rather than changing it when user picks the enemy
-  // };
-  //when user picks first character it goes left and when we pick enemy it goes right
-  //It also loads their charachter on each side based on their character counter
-  //It also loads their full energy bars based on character counter
-  //It also shows their hit strength based on character counter
   play();
   // Defining function to run game
   function play() {
-    if (timesWon >= 3) {
+    if (characterCounter > 2) {
+      $(".msgs").html("Congratulations");
       console.log("congratulations");
     }
-  }
-  $(".icon").on("click", function(event) {
-    lifeEnergy2 = "100";
-    $(".energyLife2").css({ width: lifeEnergy2 + "%" });
-    $(".energyLife1").css({ width: lifeEnergy1 + "%" });
-    sound_theme.play();
-    if (charSelected === false) {
-      character1 = $(this).attr("id"); // source https://stackoverflow.com/questions/48239/getting-the-id-of-the-element-that-fired-an-event
-      hitPower1 = $(this).attr("hitPower");
-      console.log(hitPower1);
-      console.log(character1);
-      console.log(
-        "<img src= assets/images/" + character1 + characterCounter + ".png/>"
-      );
-      $(".yourcharacter1")
-        .children("img")
-        .attr("src", "assets/images/" + character1 + characterCounter + ".png"); // source for loading image https://www.sitepoint.com/community/t/load-image-onclick-with-jquery/255772/2
-      charSelected = true;
-      sound_pick.play();
-      //source for ID+Var https://stackoverflow.com/questions/743994/how-do-i-select-an-element-in-jquery-by-using-a-variable-for-the-id
-      $("#" + character1).animate({
-        left: "-480"
-      });
-      //load energy bar
-      $(".energyLife1").css({ "background-color": "yellow" });
-    } else if (charSelected === true && enemycharSelected === false) {
-      character2 = jQuery(this).attr("id");
-      hitPower2 = $(this).attr("hitPower");
-      enemycharSelected = true;
-      console.log(hitPower2);
-      $(".yourcharacter2")
-        .children("img")
-        .attr("src", "assets/images/" + character2 + "0" + ".png");
-      sound_pick.play();
-      $("#" + character2).animate({
-        left: "480"
-      });
-      $(".energyLife2").css({ "background-color": "yellow" });
-      //fill energy bar for both
-      lifeEnergy1 = "100";
 
-      // stop player from picking another character
-    } else if (charSelected === true && enemycharSelected === true) {
-      event.stopImmediatePropagation();
-    }
-  });
+    $(".icon").on("click", function(event) {
+      $(".msgs").html("Time To Pick Your Enemy");
+      lifeEnergy2 = "100";
+      $(".energyLife2").css({ width: lifeEnergy2 + "%" });
+      $(".energyLife1").css({ width: lifeEnergy1 + "%" });
+      sound_theme.play();
+      if (charSelected === false) {
+        character1 = $(this).attr("id"); // source https://stackoverflow.com/questions/48239/getting-the-id-of-the-element-that-fired-an-event
+        hitPower1 = $(this).attr("hitPower");
+        console.log(hitPower1);
+        console.log(character1);
+        console.log(
+          "<img src= assets/images/" + character1 + characterCounter + ".png/>"
+        );
+        $(".yourcharacter1")
+          .children("img")
+          .attr(
+            "src",
+            "assets/images/" + character1 + characterCounter + ".png"
+          ); // source for loading image https://www.sitepoint.com/community/t/load-image-onclick-with-jquery/255772/2
+        charSelected = true;
+        sound_pick.play();
+        //source for ID+Var https://stackoverflow.com/questions/743994/how-do-i-select-an-element-in-jquery-by-using-a-variable-for-the-id
+        $("#" + character1).animate({
+          left: "-480"
+        });
+        //load energy bar
+        $(".energyLife1").css({ "background-color": "yellow" });
+      } else if (charSelected === true && enemycharSelected === false) {
+        $(".msgs").html("Click the PokeBall to Fight");
+        character2 = jQuery(this).attr("id");
+        hitPower2 = $(this).attr("hitPower");
+        enemycharSelected = true;
+        console.log(hitPower2);
+        $(".yourcharacter2")
+          .children("img")
+          .attr("src", "assets/images/" + character2 + "0" + ".png");
+        sound_pick.play();
+        $("#" + character2).animate({
+          left: "480"
+        });
+        $(".energyLife2").css({ "background-color": "yellow" });
+        //fill energy bar for both
+        lifeEnergy1 = "100";
+
+        // stop player from picking another character
+      } else if (charSelected === true && enemycharSelected === true) {
+        event.stopImmediatePropagation();
+      }
+    });
+  }
 
   //when user presses fight each energy bar changes according to hit power
   $(".ball").on("click", function() {
+    $(".msgs").html("Fight");
     sound_hit.play();
 
     if (lifeEnergy1 <= 0) {
@@ -90,15 +87,16 @@ $(document).ready(function() {
       console.log("you lose");
     }
     if (lifeEnergy2 <= 0 && characterCounter < 3) {
-      if (timesWon == 3) {
+      if (timesWon > 2) {
         console.log("congratulations ");
       } else {
-        alert("pick another Enemy");
+        $(".msgs").html("Time To Pick Your Enemy");
         enemycharSelected = false;
         lifeEnergy1 = 100;
         lifeEnergy2 = 100;
         characterCounter++;
         timesWon++;
+
         //load your energy bar again
         $(".energyLife1").css({ "background-color": "yellow" });
         lifeEnergy1 = "100";
@@ -115,16 +113,49 @@ $(document).ready(function() {
               $(this).removeClass("animated bounceInDown");
             }
           );
-        //evolute character one based on the character counter
-        $(".yourcharacter1")
-          .children("img")
-          .attr(
-            "src",
-            "assets/images/" + character1 + characterCounter + ".png"
-          );
+        if (characterCounter > 2) {
+          sound_win.play();
+          $(".msgs").html("Wowww you are the strongest Pokemon !!");
+          $(".yourcharacter2")
+            .children("img")
+            .attr("src", "assets/images/pikaicon3.png");
+          $(".yourcharacter1")
+            .addClass("animated bounceInLeft")
+            .one(
+              "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",
+              function() {
+                $(this).removeClass("animated bounceInLeft");
+              }
+            );
 
-        //evolution sound
-        sound_evolute.play();
+          $(".yourcharacter2")
+            .addClass("animated bounceInRight")
+            .one(
+              "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",
+              function() {
+                $(this).removeClass("animated bounceInRight");
+              }
+            );
+          $(".msgs")
+            .addClass("animated zoomInDown")
+            .one(
+              "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",
+              function() {
+                $(this).removeClass("animated zoomInDown");
+              }
+            );
+        } else {
+          //evolute character one based on the character counter
+          $(".yourcharacter1")
+            .children("img")
+            .attr(
+              "src",
+              "assets/images/" + character1 + characterCounter + ".png"
+            );
+
+          //evolution sound
+          sound_evolute.play();
+        }
       }
     } else if (lifeEnergy2 >= 0 && characterCounter < 3) {
       if ((timesWon = 3 && lifeEnergy2 <= 0)) {

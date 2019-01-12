@@ -53,3 +53,15 @@ body {
   margin: 0px;
   height: 25px;
 }
+
+.msgs {
+  color: #2b63b5;
+  text-align: center;
+  font-family: "Slackey", cursive;
+  background-color: #d8c214;
+  height: 40px;
+  border-radius: 10%;
+  width: 150px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
